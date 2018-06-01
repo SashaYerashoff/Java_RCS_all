@@ -17,8 +17,8 @@ public class SortArray2d {
 		System.out.print("Ievadi, cik masîvu vçlies izvedot: ");
 		Scanner scan = new Scanner(System.in);
 		int input = scan.nextInt();
-		int borderA = new Random().nextInt(20) + 5;
-		int borderB = new Random().nextInt(899) + 100;
+		int borderA = new Random().nextInt(21) + 5;
+		int borderB = new Random().nextInt(900) + 100;
 		System.out.println();
 		
 		while (input < 10 || input > 20) {
@@ -34,7 +34,7 @@ public class SortArray2d {
 			 //borderA = new Random().nextInt(40) + 10;
 			 
 			for (int j = 0; j < borderA; j++) {
-				borderB = new Random().nextInt(899) + 100;
+				borderB = new Random().nextInt(900) + 100;
 				userArr[i][j] = new Random().nextInt(borderB);
 				//System.out.print(userArr[j] + ", ");	
 			}
@@ -63,14 +63,26 @@ public class SortArray2d {
 			System.out.print(" [" + sumArr[i] +"] ");
 			System.out.println();
 		}
-		int[] swapSumArr = new int[sumArr.length];
-		swapSumArr = sumArr;
+		int[] swapSumArr = sumArr;
 		simpleSortDesc(swapSumArr);
 		System.out.print(swapSumArr[0]);
-		int index = Arrays.binarySearch(sumArr, swapSumArr[0]);
-		
-		
-		System.out.print(" " + index + "-- ");
+		int someValue = swapSumArr[0];
+		System.out.print(" " + someValue);
+		int theKey =getIndex(sumArr, someValue);
+		System.out.print(" -:" + theKey);
+	}
+	static int getIndex (int arr[], int value) {
+		int size = arr.length;
+		System.out.print(size);
+		int count=0;
+		for (int i = 0; i<size-1; i++ ) {
+			//count=i;
+			if (value >= arr[i]) {
+				count++;				
+			}
+			
+		}
+		return count;
 	}
 	
 	static int[] simpleSortAsc (int arr[]) 
